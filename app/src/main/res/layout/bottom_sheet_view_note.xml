@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="bsViewNote"
+            type="com.example.mynote.dialogViewNote.DialogViewModel"/>
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:background="@drawable/bg_view_note"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:backgroundTint="@color/white"
+            android:elevation="3dp"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_marginEnd="5dp"
+                        android:layout_gravity="center"
+                        android:id="@+id/bs_ln_edit"
+                        android:layout_centerHorizontal="true"
+                        android:layout_width="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_height="wrap_content">
+
+
+                        <TextView
+                            android:id="@+id/test_text"
+                            android:background="@drawable/custom_edit_text"
+                            android:layout_width="wrap_content"
+                            android:text="@={bsViewNote.headName}"
+                            android:textColor="#000"
+                            android:textSize="20dp"
+                            android:layout_height="match_parent"/>
+
+                        <ImageView
+                            android:onClick="@{bsViewNote::deleteCurrentNote}"
+                            android:layout_marginStart="15dp"
+                            android:src="@drawable/ic_delete_black"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"/>
+
+                        <ImageView
+                            android:id="@+id/bs_btn_edit_note"
+                            android:layout_width="25dp"
+                            android:layout_marginStart="15dp"
+                            android:src="@drawable/icon_edit"
+                            android:layout_height="25dp"/>
+
+                        <ImageView
+                            android:onClick="@{bsViewNote::copyCurrentNote}"
+                            android:layout_width="25dp"
+                            android:src="@drawable/ic_copy"
+                            android:layout_marginStart="15dp"
+                            android:layout_height="25dp"/>
+                        
+                    </LinearLayout>
+
+                </FrameLayout>
+
+            </androidx.appcompat.widget.Toolbar>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <EditText
+                    android:backgroundTint="@android:color/transparent"
+                    android:id="@+id/bs_edit_text_body"
+                    android:enabled="false"
+                    android:layout_margin="15dp"
+                    android:text="@={bsViewNote.bodyText}"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+
+                <com.getbase.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/bs_btn_update_note"
+                    android:onClick="@{bsViewNote::updateCurrentNote}"
+                    android:visibility="invisible"
+                    android:layout_width="match_parent"
+                    android:layout_below="@id/bs_edit_text_body"
+                    app:fab_size="mini"
+                    app:fab_colorNormal="@color/white"
+                    app:fab_icon="@drawable/check_mark"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="50dp"
+                    android:layout_height="match_parent"/>
+
+
+            </RelativeLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</layout>

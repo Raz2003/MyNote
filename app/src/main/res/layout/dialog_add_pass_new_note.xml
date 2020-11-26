@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="bindDialogAddPassViewModel"
+            type="com.example.mynote.dialogAddPassNewNote.ViewModelDialogNewPass"/>
+    </data>
+
+    <LinearLayout
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <FrameLayout
+            android:layout_marginBottom="10dp"
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_height="match_parent">
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:hint="your password"
+                android:text="@={bindDialogAddPassViewModel.password}"
+                android:paddingStart="10dp"
+                android:layout_gravity="start"
+                android:paddingEnd="10dp"
+                android:maxLines="1"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="30dp"
+                android:maxLength="8"
+                android:background="@drawable/custom_edit_text"
+                android:textColorHint="#000"
+                android:layout_height="wrap_content"/>
+
+            <com.getbase.floatingactionbutton.FloatingActionButton
+                android:layout_width="wrap_content"
+                app:fab_size="mini"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="50dp"
+                android:onClick="@{bindDialogAddPassViewModel::addPassword}"
+                app:fab_icon="@drawable/check_mark"
+                app:fab_colorNormal="@color/white"
+                android:layout_gravity="end"
+                android:layout_marginEnd="30dp"
+                android:layout_height="wrap_content"/>
+
+        </FrameLayout>
+
+    </LinearLayout>
+
+</layout>
